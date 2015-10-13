@@ -5,7 +5,8 @@ O SIGAA-x é uma proposta de remodelagem do atual Sistema Integrado de Gestão d
 - Sistema operacional Windows 10;
 - IDE Visual Studio 2015 Community Edition;
 - SDK para aplicações universais;
-- Linguagens C# e XAML.
+- Linguagens C# 6.0 e XAML;
+- .NET Framework 4.6.
 
 # Instalação e testes
 Para preparar o ambiente de desenvolvimento e testar a aplicação, pode-se seguir os seguintes passos:
