@@ -1,0 +1,12 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SigaaWindows.Resources">
+    <Style TargetType="Grid" x:Key="BackgroundGridStyle">
+        <Setter Property="Background" Value="#FF2D3441"/>
+    </Style>
+    <Style TargetType="TextBlock" x:Key="TextBlockAccentColor1Style">
+        <Setter Property="Foreground" Value="#FFDE6E67"/>
+        <Setter Property="FontFamily" Value="Franklin Gothic Medium"/>
+    </Style>
+</ResourceDictionary>
