@@ -15,7 +15,7 @@
 
         <Image Source="ms-appx:///Assets/Images/bg.jpg" Grid.Row="0" Grid.RowSpan="2" Opacity="0.15" Stretch="Fill"></Image>
 
-        <Pivot Grid.Row="1" Margin="0,10" Foreground="White" >
+        <Pivot Grid.Row="1" Margin="0,10" Foreground="White"  >
             <PivotItem>
                 <PivotItem.Header>
                     <StackPanel>
@@ -24,7 +24,7 @@
                     </StackPanel>
                 </PivotItem.Header>
 
-                <ListBox Grid.Row="1" Background="{x:Null}" Margin="0,10,0,0">
+                <ListBox Grid.Row="1" Background="{x:Null}" Margin="0,10,0,0" SelectionChanged="ListBox_SelectionChanged">
                     <ListBoxItem Background="#F64747" BorderBrush="Red" BorderThickness="0,0,0,0">
                         <StackPanel>
                             <TextBlock FontWeight="Bold" Text="Linguagem de Programação I" Foreground="#FFFFFF"/>
