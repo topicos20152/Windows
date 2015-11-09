@@ -26,5 +26,15 @@ namespace SigaaWindows.View
         {
             this.InitializeComponent();
         }
+
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            
+        }
     }
 }

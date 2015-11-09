@@ -24,38 +24,18 @@
                     </StackPanel>
                 </PivotItem.Header>
 
-                <ListBox Grid.Row="1" Background="{x:Null}" Margin="0,10,0,0" SelectionChanged="ListBox_SelectionChanged">
-                    <ListBoxItem Background="#F64747" BorderBrush="Red" BorderThickness="0,0,0,0">
-                        <StackPanel>
-                            <TextBlock FontWeight="Bold" Text="Linguagem de Programação I" Foreground="#FFFFFF"/>
-                            <TextBlock  Text="Trabalho final - Parte 1" Foreground="#FFFFFF"/>
-                            <TextBlock  Text="21/10/2015 20h35" Foreground="#FFFFFF"/>
-                        </StackPanel>
-                    </ListBoxItem>
-
-                    <ListBoxItem Background="#F4B350" BorderBrush="Red" BorderThickness="0,0,0,0">
-                        <StackPanel>
-                            <TextBlock FontWeight="Bold" Text="Estruturas de Dados Básicas I"/>
-                            <TextBlock  Text="Lista de Exercícios I"/>
-                            <TextBlock  Text="26/10/2015 20h00" />
-                        </StackPanel>
-                    </ListBoxItem>
-                    
-                    <ListBoxItem Background="#F4B350" BorderBrush="Red" BorderThickness="0,0,0,0">
-                        <StackPanel>
-                            <TextBlock FontWeight="Bold" Text="Estruturas de Dados Básicas I"/>
-                            <TextBlock  Text="Avaliação I"/>
-                            <TextBlock  Text="26/10/2015 20h00" />
-                        </StackPanel>
-                    </ListBoxItem>
-
-                    <ListBoxItem Background="#26C281" BorderBrush="Red" BorderThickness="0,0,0,0">
-                        <StackPanel>
-                            <TextBlock FontWeight="Bold" Text="Introdução a Sistemas Operacionais"/>
-                            <TextBlock  Text="Trabalho 4"/>
-                            <TextBlock  Text="31/10/2015 10h50" />
-                        </StackPanel>
-                    </ListBoxItem>
+                
+                <ListBox Grid.Row="1" Background="{x:Null}" Margin="0,10,0,0" SelectionChanged="ListBox_SelectionChanged" ItemsSource="{Binding Tasks}" Name="listTasks">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <ListBoxItem Background="GhostWhite" BorderBrush="Red" BorderThickness="0,0,0,0" Width="400">
+                                <StackPanel>
+                                    <TextBlock FontWeight="Bold" Text="{Binding Path=Title}"/>
+                                    <TextBlock  Text="{Binding Path=DeliveryDate}" />
+                                </StackPanel>
+                            </ListBoxItem>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
                 </ListBox>
             </PivotItem>
             <PivotItem>
