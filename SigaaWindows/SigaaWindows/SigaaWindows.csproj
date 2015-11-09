@@ -93,18 +93,27 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adapter\TaskAdapter.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\API\AccessTokenResult.cs" />
+    <Compile Include="Model\API\TaskResult.cs" />
+    <Compile Include="Model\AuthenticationControl.cs" />
     <Compile Include="Model\Course.cs" />
     <Compile Include="Model\CourseUser.cs" />
     <Compile Include="Model\Task.cs" />
     <Compile Include="Model\TaskDeliver.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Proxy\AbstractProxy.cs" />
+    <Compile Include="Proxy\AuthenticationProxy.cs" />
+    <Compile Include="Proxy\TaskProxy.cs" />
+    <Compile Include="ViewModel\LoginViewModel.cs" />
+    <Compile Include="ViewModel\TasksViewModel.cs" />
     <Compile Include="View\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
@@ -119,7 +128,6 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <None Include="SigaaWindows_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Images\bg.jpg" />
@@ -160,10 +168,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Adapter\" />
     <Folder Include="Assets\Icons\" />
-    <Folder Include="Proxy\" />
-    <Folder Include="ViewModel\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

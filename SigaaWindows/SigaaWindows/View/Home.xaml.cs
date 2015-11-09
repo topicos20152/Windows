@@ -1,4 +1,7 @@
-﻿using System;
+﻿using SigaaWindows.Adapter;
+using SigaaWindows.Proxy;
+using SigaaWindows.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,14 +25,19 @@ namespace SigaaWindows.View
     /// </summary>
     public sealed partial class Home : Page
     {
+        TasksViewModel viewModel;
+
         public Home()
         {
             this.InitializeComponent();
+            viewModel = new TasksViewModel();
+            viewModel.GetUserTasks();            
+            this.DataContext = viewModel;            
         }
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            this.Frame.Navigate(typeof(TaskDetails));
+            this.Frame.Navigate(typeof(TaskDetails), listTasks.SelectedItem);
         }
     }
 }

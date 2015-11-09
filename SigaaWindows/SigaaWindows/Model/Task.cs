@@ -9,6 +9,7 @@ namespace SigaaWindows.Model
     public class Task
     {
         #region Atributes
+        private string id;
         private string status;
         private DateTime deliveryDate;
         private string title;
@@ -19,6 +20,12 @@ namespace SigaaWindows.Model
         #endregion
 
         #region Properties
+        public string ID
+        {
+            get { return id; }
+            set { id = value; }
+        }
+
         public string Status
         {
             get { return status; }

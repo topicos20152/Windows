@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SigaaWindows.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -29,6 +30,8 @@ namespace SigaaWindows.View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            LoginViewModel viewModel = new LoginViewModel();
+            viewModel.Login();
             this.Frame.Navigate(typeof(View.Home));
         }
     }
