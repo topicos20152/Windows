@@ -10,27 +10,54 @@
     <Grid Style="{StaticResource BackgroundGridStyle}">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="2*"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Image Source="ms-appx:///Assets/Images/bg.jpg" Grid.RowSpan="3" Opacity="0.15" Stretch="Fill"></Image>
-        
-        <StackPanel Grid.Row="1" Margin="10,0">
-            <TextBlock Text="sigaa-x" Style="{StaticResource TextBlockAccentColor1Style}" HorizontalAlignment="Center" FontWeight="Bold" FontSize="32"/>
-            
-            <TextBlock Text="usuário" Foreground="#FFFFFF" FontSize="24"/>
-            
-            <TextBox Background="#FFFFFF"/>
-            
-            <TextBlock Text="senha" Foreground="#FFFFFF" FontSize="24"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
-            <TextBox Background="#FFFFFF"/>
+        <StackPanel Grid.Row="1" Grid.Column="1" MaxWidth="400" HorizontalAlignment="Stretch" Width="300">
+            <Border Background="#FFDE6E67" Height="70" Margin="0,0,0,20">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="SIGAA-" Foreground="#FFFFFF" FontSize="32"/>
+                    <TextBlock Text="X" Foreground="#FF2D3441" FontSize="32"/>
+                </StackPanel>                
+            </Border>
+
+            <!--<TextBlock Foreground="#FF787878" Text="Welcome" HorizontalAlignment="Center" FontWeight="Bold" Margin="0,0,0,10"/>-->
+
+            <TextBlock Foreground="#FF787878" Text="Absolutely designed to provide a clean, fast and attractive mobile vision for the academic application SIGAA UFRN" HorizontalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center" Margin="0,0,0,20"/>
+
+            <!--<TextBlock Foreground="#FF787878" Text="Login to see it in action." HorizontalAlignment="Center" Margin="0,0,0,10"/>-->
+
+            <!--<TextBlock Text="Username" Foreground="#FFFFFF" FontSize="24"/>-->
             
-            <CheckBox Content="permanecer conectado" Foreground="#FFFFFF" Margin="0,10,0,0"/>
+            <TextBox Background="#FFFFFF" Text="username" Margin="0,0,0,10"/>
             
-            <Button Content="acessar" HorizontalAlignment="Stretch" Margin="0,10,0,0" Background="#FF57A38D" Click="Button_Click"/>
+            <!--<TextBlock Text="Password" Foreground="#FFFFFF" FontSize="24"/>-->
+
+            <TextBox Background="#FFFFFF" Text="password"/>
+            
+            <CheckBox Content="Keep me signed in" Foreground="#FFFFFF" Margin="0,10,0,0"/>
+
+            <Button Content="Login" HorizontalAlignment="Stretch" Margin="0,10,0,0" Background="#FFDE6E67" Click="Button_Click" Foreground="#FFFFFF"/>
         </StackPanel>
-        
+
+        <Border Grid.Row="2" VerticalAlignment="Bottom" Grid.Column="0" Grid.ColumnSpan="3" BorderThickness="0,2,0,0" BorderBrush="#FF787878" HorizontalAlignment="Stretch" Height="50" Margin="10,0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Foreground="#FF787878" Text="COPYRIGHT SIGAA-X Windows" Grid.Column="0"/>
+
+                <TextBlock Foreground="#FF787878" Text="@2015" Grid.Column="1" HorizontalAlignment="Right"/>
+            </Grid>
+        </Border>
     </Grid>
 </Page>
