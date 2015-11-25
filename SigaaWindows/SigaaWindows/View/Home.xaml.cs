@@ -8,6 +8,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -25,19 +26,39 @@ namespace SigaaWindows.View
     /// </summary>
     public sealed partial class Home : Page
     {
-        TasksViewModel viewModel;
+        TasksViewModel tasksViewModel;
+        CoursesViewModel courseViewModel;
 
         public Home()
         {
             this.InitializeComponent();
-            viewModel = new TasksViewModel();
-            viewModel.GetUserTasks();            
-            this.DataContext = viewModel;            
+            tasksViewModel = new TasksViewModel();
+            tasksViewModel.GetUserTasks();            
+            this.DataContext = tasksViewModel;
+
+            courseViewModel = new CoursesViewModel();
+            courseViewModel.GetUserCourses();
+            menuPanel.DataContext = courseViewModel;
         }
 
-        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void HamburgerButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(TaskDetails), listTasks.SelectedItem);
+            MainSplitView.IsPaneOpen = !MainSplitView.IsPaneOpen;
+        }
+
+        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(TaskDetails), tasksViewModel.SelectedTask);
+        }
+
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Collapsed;
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
         }
     }
 }

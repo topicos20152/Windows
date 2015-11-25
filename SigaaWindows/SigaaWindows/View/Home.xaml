@@ -5,38 +5,45 @@
     xmlns:local="using:SigaaWindows.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    xmlns:converters="using:SigaaWindows.Converters"
+    mc:Ignorable="d" NavigationCacheMode="Enabled">
+
+    <Page.Resources>
+        <converters:DeliveryDateToColorConverter x:Key="deliveryDateToColorConverter"/>
+    </Page.Resources>
 
     <SplitView DisplayMode="CompactOverlay" CompactPaneLength="48" OpenPaneLength="300" Name="MainSplitView">
         <SplitView.Pane>
-            <StackPanel>
+            <StackPanel Name="menuPanel">
                 <Button FontFamily="Segoe MDL2 Assets" Width="48" Height="48" Content="&#xE700;" Name="HamburgerButton" Click="HamburgerButton_Click"/>
-                <ListView Margin="48,0,0,0" >
-                    <ListViewHeaderItem Content="Turmas"/>
-                    <ListViewItem Content="Linguagem de Programação II"/>
-                    <ListViewItem Content="Estruturas de Dados Básicas II"/>
-                    <ListViewItem Content="Introdução a Sistemas Operacionais"/>
-                    <ListViewItem Content="Tópicos Especiais em Engenharia de Software III"/>
-                    <ListViewItem Content="Projeto de Interfaces do Usuário"/>
-                    <ListViewItem Content="Análise e Projeto Orientado a Objetos"/>
-                    <ListViewItem Content="Redes de Computadores"/>
-                    <ListViewItem Content="Boas Práticas de Programação"/>
+                <ListView Margin="48,0,0,0" ItemsSource="{Binding Courses}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Title}"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
                 </ListView>
             </StackPanel>
         </SplitView.Pane>
         <SplitView.Content>
-            <ListBox Background="#FF2D3441" SelectionChanged="ListBox_SelectionChanged" ItemsSource="{Binding Tasks}" Name="listTasks">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <ListBoxItem Background="GhostWhite" BorderBrush="Red" BorderThickness="0,0,0,0" Width="400">
-                            <StackPanel>
-                                <TextBlock FontWeight="Bold" Text="{Binding Path=Title}"/>
-                                <TextBlock  Text="{Binding Path=DeliveryDate}" />
+            <Grid Style="{StaticResource BackgroundGridStyle}">
+                <ListView ItemsSource="{Binding Tasks}" SelectionChanged="ListView_SelectionChanged" SelectedItem="{Binding SelectedTask, Mode=TwoWay}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel Margin="0,0,10,0" VerticalAlignment="Center">
+                                    <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE787;" HorizontalAlignment="Center" Foreground="White"/>
+                                    <TextBlock Text="{Binding DeliveryDateFormated}" Foreground="White"/>
+                                </StackPanel>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding Title}" FontWeight="Bold" Foreground="White" />
+                                    <TextBlock Text="{Binding Course.Title}" Foreground="White"/>
+                                </StackPanel>
                             </StackPanel>
-                        </ListBoxItem>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
         </SplitView.Content>
     </SplitView>
 </Page>
