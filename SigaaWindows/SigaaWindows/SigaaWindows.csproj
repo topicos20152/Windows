@@ -93,14 +93,17 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adapter\CourseAdapter.cs" />
     <Compile Include="Adapter\TaskAdapter.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\DeliveryDateToColorConverter.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\API\AccessTokenResult.cs" />
+    <Compile Include="Model\API\CourseResult.cs" />
     <Compile Include="Model\API\TaskResult.cs" />
     <Compile Include="Model\AuthenticationControl.cs" />
     <Compile Include="Model\Course.cs" />
@@ -111,7 +114,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Proxy\AbstractProxy.cs" />
     <Compile Include="Proxy\AuthenticationProxy.cs" />
+    <Compile Include="Proxy\CourseProxy.cs" />
     <Compile Include="Proxy\TaskProxy.cs" />
+    <Compile Include="ViewModel\CoursesViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\TasksViewModel.cs" />
     <Compile Include="View\Home.xaml.cs">

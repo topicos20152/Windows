@@ -10,9 +10,16 @@ namespace SigaaWindows.Model
     {
         #region Atributes
         private string title;
+        private string id;
         #endregion
 
         #region Properties
+        public string ID
+        {
+            get { return id; }
+            set { id = value; }
+        }
+
         public string Title
         {
             get { return title; }
