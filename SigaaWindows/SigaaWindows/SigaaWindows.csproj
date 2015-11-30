@@ -104,6 +104,7 @@
     </Compile>
     <Compile Include="Model\API\AccessTokenResult.cs" />
     <Compile Include="Model\API\CourseResult.cs" />
+    <Compile Include="Model\API\TaskDetailsResult.cs" />
     <Compile Include="Model\API\TaskResult.cs" />
     <Compile Include="Model\AuthenticationControl.cs" />
     <Compile Include="Model\Course.cs" />

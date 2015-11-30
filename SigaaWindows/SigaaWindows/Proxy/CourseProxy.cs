@@ -8,15 +8,11 @@ using System.Threading.Tasks;
 
 namespace SigaaWindows.Proxy
 {
-    public class CourseProxy
+    public class CourseProxy:AbstractProxy
     {
         public List<Model.API.CourseResult> GetUserCourses(string userId, string accessToken)
         {
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("http://topicos-api.herokuapp.com/");
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            HttpResponseMessage response = client.GetAsync($"/api/v1/users/{userId}/courses?access_token={accessToken}").Result;
+            HttpResponseMessage response = RequestClient.GetAsync($"/api/v1/users/{userId}/courses?access_token={accessToken}").Result;
             var courses = response.Content.ReadAsAsync<List<Model.API.CourseResult>>().Result;
             return courses;
         }

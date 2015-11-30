@@ -9,28 +9,27 @@ using System.Threading.Tasks;
 
 namespace SigaaWindows.Proxy
 {
-    public class TaskProxy
+    public class TaskProxy:AbstractProxy
     {
         public List<Model.API.TaskResult> GetAllTasks()
         {
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("http://topicos-api.herokuapp.com/");
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            HttpResponseMessage response = client.GetAsync("/tasks").Result;
+            HttpResponseMessage response = RequestClient.GetAsync("/api/v1/tasks").Result;
             var tasks = response.Content.ReadAsAsync<List<Model.API.TaskResult>>().Result;            
             return tasks;
         }
 
         public List<Model.API.TaskResult> GetUserTasks(string userId, string accessToken)
         {
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("http://topicos-api.herokuapp.com/");
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            HttpResponseMessage response = client.GetAsync($"/users/{userId}/tasks?access_token={accessToken}").Result;
+            HttpResponseMessage response = RequestClient.GetAsync($"/api/v1/users/{userId}/tasks?access_token={accessToken}").Result;
             var tasks = response.Content.ReadAsAsync<List<Model.API.TaskResult>>().Result;
             return tasks;
+        }
+
+        public Model.API.TaskDetailsResult GetTaskDetails(string taskId)
+        {
+            HttpResponseMessage response = RequestClient.GetAsync($"/api/v1/tasks/{taskId}").Result;
+            var task = response.Content.ReadAsAsync<Model.API.TaskDetailsResult>().Result;
+            return task;
         }
     }
 }

@@ -6,7 +6,11 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton Icon="Download" Label="arquivo"/>
+        </CommandBar>
+    </Page.BottomAppBar>
     <Grid Style="{StaticResource BackgroundGridStyle}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -14,19 +18,40 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <Image Source="ms-appx:///Assets/Images/bg.jpg" Grid.RowSpan="3" Opacity="0.15" Stretch="Fill"></Image>
-
         <TextBlock Text="detalhes da tarefa" Style="{StaticResource TextBlockAccentColor1Style}" HorizontalAlignment="Center" FontWeight="Bold" FontSize="32"/>
 
         <Border Background="#FFFFFF" Grid.Row="1" Margin="10" Padding="5">
             <StackPanel>
-                <TextBlock Text="Nam pretium turpis et" FontWeight="Bold" FontSize="16" Name="lblTitle"/>
-                <TextBlock Text="Termina em: 28/10/2015" FontSize="16" Name="lblDate"/>
-                <TextBlock Text="Descrição descrição descrição descrição descrição descrição descrição descrição descrição descrição descrição descrição descrição descrição descrição descrição" TextWrapping="Wrap" FontSize="16" Margin="0,10"/>
-                <Button Content="baixar arquivo" HorizontalAlignment="Stretch" Margin="0,10,0,0" Background="#FF57A38D"/>
+                <Border BorderThickness="0,0,0,1" BorderBrush="Gray" Padding="0,5">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE7C3;" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                        <TextBlock FontFamily="Century Gothic" Text="{Binding Title}" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Border>
+
+                <Border BorderThickness="0,0,0,1" BorderBrush="Gray" Padding="0,5">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE716;" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                        <TextBlock FontFamily="Century Gothic" Text="{Binding Course.Title}" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Border>
+
+                <Border BorderThickness="0,0,0,1" BorderBrush="Gray" Padding="0,5">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE787;" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                        <TextBlock FontFamily="Century Gothic" Text="{Binding DeliveryDate}" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Border>
+
+                <Border x:Name="border" BorderThickness="0,0,0,1" BorderBrush="Gray" Padding="0,5">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE712;" VerticalAlignment="Top" Margin="0,0,5,0"/>
+                        <TextBlock FontFamily="Century Gothic" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam orci ante, pretium in elit eget, convallis pretium est. Ut a laoreet elit. Pellentesque et malesuada nibh. Sed neque nisl, mattis sed facilisis eu, finibus ut velit." TextWrapping="Wrap" MaxWidth="{Binding ActualWidth, ElementName=border, Mode=OneWay}"/>
+                    </StackPanel>
+                </Border>
             </StackPanel>
         </Border>
 
-        
+
     </Grid>
 </Page>

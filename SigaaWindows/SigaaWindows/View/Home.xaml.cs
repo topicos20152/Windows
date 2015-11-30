@@ -1,4 +1,5 @@
 ﻿using SigaaWindows.Adapter;
+using SigaaWindows.Model;
 using SigaaWindows.Proxy;
 using SigaaWindows.ViewModel;
 using System;
@@ -9,6 +10,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Core;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -59,6 +61,21 @@ namespace SigaaWindows.View
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
+        }
+
+        private void ListView_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+            Course course = listCourses.SelectedItem as Course;
+            tasksViewModel.FilterTasksByCourse(course);
+            listTasks.ItemsSource = tasksViewModel.Tasks;
+            MainSplitView.IsPaneOpen = false;
+        }
+
+        private void ShowAllTasksButton_Click(object sender, RoutedEventArgs e)
+        {
+            tasksViewModel.ClearFilter();
+            listTasks.ItemsSource = tasksViewModel.Tasks;
+            MainSplitView.IsPaneOpen = false;
         }
     }
 }
