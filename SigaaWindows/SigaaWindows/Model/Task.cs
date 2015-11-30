@@ -67,6 +67,14 @@ namespace SigaaWindows.Model
             get { return course; }
             set { course = value; }
         }
+
+        public string DeliveryDateFormated
+        {
+            get
+            {
+                return deliveryDate.ToString("dd/MM hh:mm");
+            }
+        }
         #endregion
     }
 }

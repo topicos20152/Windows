@@ -8,15 +8,11 @@ using System.Threading.Tasks;
 
 namespace SigaaWindows.Proxy
 {
-    public class AuthenticationProxy
+    public class AuthenticationProxy:AbstractProxy
     {
         public string GetAccessToken()
         {
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("http://topicos-api.herokuapp.com/");
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            HttpResponseMessage response = client.PostAsync("/api/v1/users/564ce3525e5ca90003000005/request_access_token", null).Result;
+            HttpResponseMessage response = RequestClient.PostAsync("/api/v1/users/564ce3525e5ca90003000005/request_access_token", null).Result;
             var token = response.Content.ReadAsAsync<Model.API.AccessTokenResult>().Result;
             return token.value;
         }

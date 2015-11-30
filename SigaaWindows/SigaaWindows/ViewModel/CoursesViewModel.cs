@@ -12,13 +12,16 @@ namespace SigaaWindows.ViewModel
 {
     public class CoursesViewModel
     {
-        public ObservableCollection<Model.Course> Courses { get; set; }
+        private List<Model.Course> courses;
+
+        public ObservableCollection<Course> Courses { get; set; }
 
         public void GetUserCourses()
         {
             CourseAdapter courseAdapter = new CourseAdapter();
             CourseProxy courseProxy = new CourseProxy();
-            Courses = new ObservableCollection<Model.Course>(courseAdapter.GetCourses(courseProxy.GetUserCourses("564ce3525e5ca90003000005", AuthenticationControl.AccessToken)));
+            courses = courseAdapter.GetCourses(courseProxy.GetUserCourses("564ce3525e5ca90003000005", AuthenticationControl.AccessToken)).ToList();
+            Courses = new ObservableCollection<Model.Course>(courses);
         }
     }
 }

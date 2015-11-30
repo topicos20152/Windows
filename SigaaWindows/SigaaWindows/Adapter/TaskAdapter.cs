@@ -19,6 +19,20 @@ namespace SigaaWindows.Adapter
             };
         }
 
+        public Model.Task GetTask(Model.API.TaskDetailsResult taskDetails)
+        {
+            return new Model.Task()
+            {
+                Course = new Course() { Title = taskDetails.course_title },
+                DeliveryDate = DateTime.Parse(taskDetails.delivery_date),
+                ID = taskDetails.id,
+                Title = taskDetails.title,
+                Attachment = taskDetails.attachment,
+                Description = taskDetails.description,
+                Status = taskDetails.answers
+            };
+        }
+
         public IEnumerable<Model.Task> GetTasks(IEnumerable<Model.API.TaskResult> taskResults)
         {
             List<Model.Task> tasks = new List<Task>();

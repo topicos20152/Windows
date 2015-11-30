@@ -16,7 +16,20 @@
         <SplitView.Pane>
             <StackPanel Name="menuPanel">
                 <Button FontFamily="Segoe MDL2 Assets" Width="48" Height="48" Content="&#xE700;" Name="HamburgerButton" Click="HamburgerButton_Click"/>
-                <ListView Margin="48,0,0,0" ItemsSource="{Binding Courses}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button FontFamily="Segoe MDL2 Assets" Width="48" Height="48" Content="&#xE72C;" Name="ShowAllTasksButton" Click="ShowAllTasksButton_Click" Grid.Column="0"/>
+                    <Button Height="48" Content="Show All Tasks" Click="ShowAllTasksButton_Click" Grid.Column="1" HorizontalAlignment="Stretch"/>
+                </Grid>
+                <!--<StackPanel Orientation="Horizontal">
+                    <Button FontFamily="Segoe MDL2 Assets" Width="48" Height="48" Content="&#xE72C;" Name="ShowAllTasksButton" Click="ShowAllTasksButton_Click"/>
+                    <Button Height="48" Content="Show All Tasks" Click="ShowAllTasksButton_Click"/>
+                </StackPanel>-->
+                
+                <ListView Margin="48,0,0,0" ItemsSource="{Binding Courses}" SelectionChanged="ListView_SelectionChanged_1" Name="listCourses">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding Title}"/>
@@ -27,7 +40,7 @@
         </SplitView.Pane>
         <SplitView.Content>
             <Grid Style="{StaticResource BackgroundGridStyle}">
-                <ListView ItemsSource="{Binding Tasks}" SelectionChanged="ListView_SelectionChanged" SelectedItem="{Binding SelectedTask, Mode=TwoWay}">
+                <ListView ItemsSource="{Binding Tasks}" SelectionChanged="ListView_SelectionChanged" SelectedItem="{Binding SelectedTask, Mode=TwoWay}" Name="listTasks">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
